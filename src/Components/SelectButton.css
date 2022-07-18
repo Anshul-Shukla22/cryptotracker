@@ -1,0 +1,22 @@
+.selectbutton {
+    border: 1px solid gold;
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    min-width: 22%;
+}
+
+.selectbutton:hover {
+    background-color: gold;
+    color: black;
+}
+@media  screen and (max-width: 650px) {
+    .selectbutton {
+        width: 10px;
+        padding: 5px;
+    }
+}
+    

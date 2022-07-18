@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Coin.css';
+import {useNavigate} from 'react-router-dom';
 
 const Coin = ({
+  iid,
   name,
   price,
   symbol,
@@ -10,14 +12,18 @@ const Coin = ({
   image,
   priceChange
 }) => {
+  const navigate = useNavigate();
+  const sendKey=(key) => {
+    navigate(`/coins/${key}`)
+  }
   return (
     <div className='coin-container'>
-      <div className='coin-row'>
+      <div className='coin-row' style={{cursor: "pointer"}}  onClick={() => sendKey(iid)}>
         <div className='coin'>
-          <img src={image} alt='crypto' />
-          <h1>{name}</h1>
+          <img className='coin-image' src={image} alt='crypto' />
+          <h1 className='naame'>{name}</h1>
           <p className='coin-symbol'>{symbol}</p>
-        </div>
+        </div>  
         <div className='coin-data'>
           <p className='coin-price'>${price}</p>
           <p className='coin-volume'>${volume.toLocaleString()}</p>
