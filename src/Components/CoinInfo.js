@@ -3,29 +3,28 @@ import axios from 'axios';
 import './CoinInfo.css';
 import { HistoricalChart } from '../config/api';
 import { createTheme, ThemeProvider } from '@mui/system';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, MenuItem, Select } from '@mui/material';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS, LineElement, PointElement, LinearScale, Title, CategoryScale
 } from "chart.js";
 import { chartDays } from '../config/data';
 import SelectButton from './SelectButton';
+import { CryptoState } from '../CryptoContext';
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
 const CoinInfo = ({ coin }) => {
   const [historicalData, setHistoricData] = useState();
   const [days, setDays] = useState(1);
   const [flag, setflag] = useState(false);
-  const [currency, setCurrency] = useState("INR");
+  const {currency,setCurrency} = CryptoState();
   const fetchHistoricData = async () => {
     const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
     setflag(true);
     setHistoricData(data.prices);
   };
-
-
   useEffect(() => {
     fetchHistoricData();
-  },  [days]);
+  }, [days,currency]);
 
   const darkTheme = createTheme({
     palette: {
@@ -57,10 +56,11 @@ const CoinInfo = ({ coin }) => {
               }),
               datasets: [
                 {
-                  label: `Price (Past ${days} Days) in${currency}`,
+                  lineTension: 0.2,
                   data: historicalData.map((coin) => coin[1]),
                   borderColor: "#EEBC1D",
-                },
+                  label: `Price (Past ${days} Days) in${currency}`,
+                }
               ],
             }}
             options={{
@@ -69,6 +69,11 @@ const CoinInfo = ({ coin }) => {
                   radius: 1,
                 },
               },
+              plugins:{
+                legend: {
+                 display: true
+                }
+               }
             }}
           />
           <div
