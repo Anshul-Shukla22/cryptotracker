@@ -2,7 +2,7 @@ import React from 'react'
 import { CryptoState } from "../CryptoContext";
 import { useNavigate } from 'react-router-dom';
 import { Container, ThemeProvider } from '@mui/system';
-import { AppBar, createTheme, InputLabel, MenuItem, Select, Toolbar, Typography } from '@mui/material';
+import { AppBar, createTheme, MenuItem, Select, Toolbar, Typography } from '@mui/material';
 import './Header.css'
 const Header = () => {
     const { currency, setCurrency } = CryptoState();

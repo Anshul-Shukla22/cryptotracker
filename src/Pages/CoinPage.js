@@ -1,6 +1,6 @@
-import { LinearProgress, MenuItem, Select, Typography } from '@mui/material';
+import { LinearProgress, Typography } from '@mui/material';
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import CoinInfo from '../Components/CoinInfo';
 import './CoinPage.css';
@@ -13,8 +13,9 @@ const CoinPage = () => {
     const { data } = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`);
     setCoin(data);
   };
-  const { coin, setCoin, currency, setCurrency, symbol, setSymbol } = CryptoState();
+  const { coin, setCoin, currency, symbol } = CryptoState();
   useEffect(() => {
+    /* eslint-disable */
     fetchCoin();
   }, [symbol]);
 
@@ -22,9 +23,9 @@ const CoinPage = () => {
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
-  if (!coin) return <LinearProgress style={{ backgroundColor: "gold" }} />;
+  if (!coin) {return <LinearProgress style={{ backgroundColor: "gold" }} />};
   return (
-    <div className='container' style={{marginTop:4}} >
+    <div className='container' style={{ marginTop: 4 }} >
       <div className="sidebar">
         <img
           src={coin?.image.large}
@@ -38,7 +39,7 @@ const CoinPage = () => {
         <Typography variant="subtitle1" className='description'>
           {coin ? parse(coin?.description.en.split(". ")[0]) : ''}
         </Typography>
-       
+
         <div className='marketData'>
           <span style={{ display: "flex" }}>
             <Typography variant="h5" className='heading'>
@@ -97,7 +98,7 @@ const CoinPage = () => {
       </div>
       <CoinInfo coin={coin} />
     </div>
-    
-  )
+
+  );
 }
 export default CoinPage;

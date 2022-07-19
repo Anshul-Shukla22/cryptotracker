@@ -3,7 +3,7 @@ import axios from 'axios';
 import './CoinInfo.css';
 import { HistoricalChart } from '../config/api';
 import { createTheme, ThemeProvider } from '@mui/system';
-import { CircularProgress, MenuItem, Select } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS, LineElement, PointElement, LinearScale, Title, CategoryScale
@@ -16,13 +16,14 @@ const CoinInfo = ({ coin }) => {
   const [historicalData, setHistoricData] = useState();
   const [days, setDays] = useState(1);
   const [flag, setflag] = useState(false);
-  const {currency,setCurrency} = CryptoState();
+  const {currency} = CryptoState();
   const fetchHistoricData = async () => {
     const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
     setflag(true);
     setHistoricData(data.prices);
   };
   useEffect(() => {
+    /* eslint-disable */
     fetchHistoricData();
   }, [days,currency]);
 
