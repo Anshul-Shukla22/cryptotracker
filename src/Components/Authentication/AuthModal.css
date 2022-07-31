@@ -1,0 +1,34 @@
+.modal{
+    display: flex;
+    background-color: rgba(78, 86, 86, 0.276);
+    align-items: center;
+    justify-content: center;
+}
+.paper{
+    width: 400px;
+    color: white;
+    border-radius: 10px;
+}
+.google{
+    padding: 24px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction:column;
+    text-align:center;
+    gap: 20px;
+    font-size: 20px;
+    justify-content:center;
+    align-items: center;
+}
+span{
+    background-color: inherit;
+}
+.MuiModal-root{
+    background-color: rgba(79, 78, 78, 0.164)!important;
+}
+.MuiInputLabel-root{
+    color: white!important;
+}
+.MuiOutlinedInput-input{
+    color: white!important;
+}

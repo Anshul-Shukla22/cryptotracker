@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { Container, ThemeProvider } from '@mui/system';
 import { AppBar, createTheme, MenuItem, Select, Toolbar, Typography } from '@mui/material';
 import './Header.css'
+import AuthModal from './Authentication/AuthModal';
+import UserSidebar from './Authentication/UserSidebar';
 const Header = () => {
-    const { currency, setCurrency } = CryptoState();
+    const { currency, setCurrency, user } = CryptoState();
     const navigate = useNavigate();
     const darkTheme = createTheme({
         palette: {
@@ -34,12 +36,14 @@ const Header = () => {
                             id="demo-simple-select"
                             value={currency}
                             color="secondary"
-                            style={{ width: 100, height: 40, marginLeft: 15 ,color:'#fff'}}
+                            style={{ width: 100, height: 40, marginLeft: 15, color: '#fff' }}
                             onChange={(e) => setCurrency(e.target.value)}
                         >
                             <MenuItem value={"USD"}>USD</MenuItem>
                             <MenuItem value={"INR"}>INR</MenuItem>
                         </Select>
+                        {user ? <UserSidebar/> : <AuthModal />}
+
                     </Toolbar>
                 </Container>
             </AppBar>

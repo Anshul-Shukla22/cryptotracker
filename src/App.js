@@ -3,7 +3,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Homepage from './Pages/Homepage';
 import CoinPage from './Pages/CoinPage';
-import Header from './Pages/Header';
+import Header from './Components/Header';
+import Alert from './Components/Alert';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path='/' element={<Homepage />} />
         <Route path='/coins/:id' element={<CoinPage />} />
       </Routes>
+      <Alert/>
     </BrowserRouter>
   );
 }

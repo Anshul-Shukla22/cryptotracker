@@ -1,32 +1,34 @@
 import React from 'react';
 import './Coin.css';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { CryptoState } from '../CryptoContext';
 
 const Coin = ({
   iid,
   name,
   price,
-  symbol,
+  coinsymbol,
   marketcap,
   volume,
   image,
   priceChange
 }) => {
   const navigate = useNavigate();
-  const sendKey=(key) => {
+  const { symbol } = CryptoState();
+  const sendKey = (key) => {
     navigate(`/coins/${key}`)
   }
   return (
     <div className='coin-container'>
-      <div className='coin-row' style={{cursor: "pointer"}}  onClick={() => sendKey(iid)}>
+      <div className='coin-row' style={{ cursor: "pointer" }} onClick={() => sendKey(iid)}>
         <div className='coin'>
           <img className='coin-image' src={image} alt='crypto' />
           <h1 className='naame'>{name}</h1>
-          <p className='coin-symbol'>{symbol}</p>
-        </div>  
+          <p className='coin-symbol'>{coinsymbol}</p>
+        </div>
         <div className='coin-data'>
-          <p className='coin-price'>${price}</p>
-          <p className='coin-volume'>${volume.toLocaleString()}</p>
+          <p className='coin-price'>{symbol}{price}</p>
+          <p className='coin-volume'>{symbol}{volume.toLocaleString()}</p>
 
           {priceChange < 0 ? (
             <p className='coin-percent red'>{priceChange.toFixed(2)}%</p>
@@ -35,7 +37,7 @@ const Coin = ({
           )}
 
           <p className='coin-marketcap'>
-            Mkt Cap: ${marketcap.toLocaleString()}
+            Mkt Cap: {symbol}{marketcap.toLocaleString()}
           </p>
         </div>
       </div>

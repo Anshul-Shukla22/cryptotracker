@@ -1,0 +1,63 @@
+.usercontainer{
+    width:350px;
+    padding:25px;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    font-family:monospace!important;
+}
+.userprofile{
+    flex: 1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    height:92%;
+}
+.logout{
+    height:8%;
+    width:100%;
+    background-color:#EEBC1D!important;
+    margin-top:20px!important;
+}
+.userpicture{
+    width:100px!important;
+    height:100px!important;
+    cursor:pointer;
+    background-color:#EEBC1D!important;
+    object-fit:contain;
+}
+.watchlist{
+    flex: 1;
+    width:100%;
+    background-color:grey;
+    border-radius:10px;
+    padding:15px;
+    padding-top:10px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+    overflow-y:scroll;
+}
+.usercoin{
+    padding:10px;
+    border-radius:5px;
+    color:black;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background-color:#EEBC1D;
+    box-shadow:0 0 3px black;
+}
+.MuiSvgIcon-root{
+background-color: #EEBC1D;
+border-radius: 15px;
+}
+.MuiSvgIcon-root path{
+    color: rgb(44, 43, 43);
+}
+.MuiModal-root{
+    background-color: rgba(87, 85, 85, 0);
+}

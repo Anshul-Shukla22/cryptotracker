@@ -18,3 +18,9 @@ background: transparent;
 #menu-{
     background: transparent;
 }
+.select svg{
+    background-color: rgb(39, 38, 38)!important;
+}
+.select svg path{
+    color: white!important;
+}
