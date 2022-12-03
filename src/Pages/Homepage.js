@@ -23,6 +23,8 @@ const Homepage = () => {
     coin.name.toLowerCase().includes(search.toLowerCase())
   );
 
+  //lokesh here
+
   return (
     <div>
       {loading ? (
